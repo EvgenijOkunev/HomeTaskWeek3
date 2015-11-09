@@ -2,6 +2,12 @@ package com.geekhub.hw3.auth;
 
 public class AuthenticationService {
 
+    private User[] users = {
+            new User("Geekhub", "qwe123"),
+            new User("Batman", "catwoman"),
+            new User("Anna", "654321")
+    };
+
     public static void main(String[] args) {
         AuthenticationService authService = new AuthenticationService();
 
@@ -30,12 +36,6 @@ public class AuthenticationService {
         }
     }
 
-    private User[] users = {
-        new User("Geekhub", "qwe123"),
-        new User("Batman", "catwoman"),
-        new User("Anna", "654321")
-    };
-
     private User auth(String login, String password) throws AuthException {
 
         if (login.equals("") || password.equals("")) {
@@ -47,8 +47,7 @@ public class AuthenticationService {
                 if (user.getPassword().equals(password)) {
                     System.out.println("User \"" + login + "\" logged in successfully");
                     return user;
-                }
-                else {
+                } else {
                     throw new WrongPasswrodException("User \"" + login + "\" entered the wrong password");
                 }
             }
